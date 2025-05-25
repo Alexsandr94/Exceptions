@@ -100,4 +100,58 @@ public class ProductTest {
         // Act & Assert
         assertNotEquals(product1.hashCode(), product2.hashCode(), "Хэш-коды разных объектов должны быть разными");
     }
+
+    @Test
+    public void testGetTitle() {
+        // Arrange
+        Product product = new Product(20, "Телевизор", 50_000);
+
+        // Act
+        String actual = product.getTitle();
+
+        // Assert
+        assertEquals("Телевизор", actual);
+    }
+
+    @Test
+    public void testGetPrice() {
+        // Arrange
+        Product product = new Product(21, "Холодильник", 80_000);
+
+        // Act
+        int actual = product.getPrice();
+
+        // Assert
+        assertEquals(80_000, actual);
+    }
+
+    @Test
+    public void testEquals_DifferentId() {
+        // Arrange
+        Product product1 = new Product(22, "Чайник", 3_000);
+        Product product2 = new Product(23, "Чайник", 3_000);
+
+        // Act & Assert
+        assertFalse(product1.equals(product2));
+    }
+
+    @Test
+    public void testEquals_DifferentTitle() {
+        // Arrange
+        Product product1 = new Product(24, "Кофемолка", 5_000);
+        Product product2 = new Product(24, "Кофемашинка", 5_000);
+
+        // Act & Assert
+        assertFalse(product1.equals(product2));
+    }
+
+    @Test
+    public void testEquals_DifferentPrice() {
+        // Arrange
+        Product product1 = new Product(25, "Кофемолка", 5_000);
+        Product product2 = new Product(25, "Кофемолка", 6_000);
+
+        // Act & Assert
+        assertFalse(product1.equals(product2));
+    }
 }
